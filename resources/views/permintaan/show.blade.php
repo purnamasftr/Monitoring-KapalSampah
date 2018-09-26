@@ -22,27 +22,193 @@
                 <h3 align="center">{{$kapal_name}}</h3>
 
                 <br>
-                <?php if ($idmin > 0): ?>
-                  <h5 align="center">Juru Mudi : {{$permintaans->juru_mudi}}</h5>
-                  <h5 align="center">Tanggal Pengisian : {{$permintaanmin->tanggal_isi}}</h5>
-                  <h5 align="center">Jumlah Setelah Pengisian Lalu : {{$permintaanmin->v_awal}}</h5>
-                  <h5 align="center">Pemakaian Motor Induk : {{$permintaanmin->v_me}}</h5>
-                  <h5 align="center">Pemakaian Motor Bantu : {{$permintaanmin->v_ae}}</h5>
-                  <h5 align="center">Jumlah Pemakaian : {{$permintaanmin->v_pemakaian}}</h5>
-                  <h5 align="center">Perhitungan Sisa : {{$permintaanmin->v_sisa}}</h5>
-                  <h5 align="center">Permintaan Tambahan : {{$permintaans->v_permintaan}}</h5>
-                  <h5 align="center">Jumlah Setelah Pengisian : {{$permintaanmin->v_awal}}</h5>
+              <table id="tabel" align="center">
+                <?php if ($permintaans->min_id != $permintaans->id): ?>
+                  <tr>
+                    <td id="td" align="left" >Juru Mudi</td>
+                    <td align="center" >  </td>
+                    <td align="center" >  </td>
+                    <td align="center" >:</td>
+                    <td align="right" >  </td>
+                    <td align="right" >{{$permintaans->juru_mudi}}</td>
+                  </tr>
+
+                  <tr>
+                    <td id="td" align="left" >Tanggal Pengisian</td>
+                    <td align="center" >  </td>
+                    <td align="center" >  </td>
+                    <td align="center" >:</td>
+                    <td align="right" >  </td>
+                    <td align="right" >{{$permintaanmin->tanggal_isi}}</td>
+                  </tr>
+
+                  <tr>
+                    <td id="td" align="left" >Jumlah Setelah Pengisian Lalu</td>
+                    <td align="center" >  </td>
+                    <td align="center" >  </td>
+                    <td align="center" >:</td>
+                    <td align="right" >  </td>
+                    <td align="right" >{{$permintaanmin->v_awal}}</td>
+                  </tr>
+
+                  <tr>
+                    <td id="td" align="left" >Pemakaian Motor Induk</td>
+                    <td align="center" >  </td>
+                    <td align="center" >  </td>
+                    <td align="center" >:</td>
+                    <td align="right" >  </td>
+                    <td align="right" >{{$permintaanmin->v_me}}</td>
+                  </tr>
+
+                  <tr>
+                    <td id="td" align="left" >Pemakaian Motor Bantu</td>
+                    <td align="center" >  </td>
+                    <td align="center" >  </td>
+                    <td align="center" >:</td>
+                    <td align="right" >  </td>
+                    <td align="right" >{{$permintaanmin->v_ae}}</td>
+                  </tr>
+
+                  <tr>
+                    <td id="td" align="left" >Jumlah Pemakaian</td>
+                    <td align="center" >  </td>
+                    <td align="center" >  </td>
+                    <td align="center" >:</td>
+                    <td align="right" >  </td>
+                    <td align="right" >{{$permintaanmin->v_pemakaian}}</td>
+                  </tr>
+
+                  <tr>
+                    <td id="td" align="left" >Perhitungan Sisa Tangki Harian</td>
+                    <td align="center" >  </td>
+                    <td align="center" >  </td>
+                    <td align="center" >:</td>
+                    <td align="right" >  </td>
+                    <td align="right" >{{$permintaanmin->v_sisa}}</td>
+                  </tr>
+
+                  <tr>
+                    <td id="td" align="left" >Permintaan Tambahan</td>
+                    <td align="center" >  </td>
+                    <td align="center" >  </td>
+                    <td align="center" >:</td>
+                    <td align="right" >  </td>
+                    <td align="right" > {{$permintaans->v_permintaan}}</td>
+                  </tr>
+
+                  <tr>
+                    <td id="td" align="left" >Permintaan VTS</td>
+                    <td align="center" >  </td>
+                    <td align="center" >  </td>
+                    <td align="center" >:</td>
+                    <td align="right" >  </td>
+                    <td align="right" >{{$permintaans->vts}}</td>
+                  </tr>
+
+                  <tr>
+                    <td id="td" align="left" >Jumlah Setelah Pengisian</td>
+                    <td align="center" >  </td>
+                    <td align="center" >  </td>
+                    <td align="center" >:</td>
+                    <td align="right" >  </td>
+                    <td align="right" >{{$permintaans->v_awal}}</td>
+                  </tr>
+
+
+
                 <?php else: ?>
-                  <h5 align="center">Juru Mudi : -</h5>
-                  <h5 align="center">Tanggal Pengisian : -</h5>
-                  <h5 align="center">Jumlah Setelah Pengisian Lalu : -</h5>
-                  <h5 align="center">Pemakaian Motor Induk : -</h5>
-                  <h5 align="center">Pemakaian Motor Bantu : -</h5>
-                  <h5 align="center">Jumlah Pemakaian : -</h5>
-                  <h5 align="center">Perhitungan Sisa : -</h5>
-                  <h5 align="center">Permintaan Tambahan : {{$permintaans->v_permintaan}}</h5>
-                  <h5 align="center">Jumlah Setelah Pengisian : {{$permintaans->v_awal}}</h5>
+
+                  <tr>
+                    <td id="td" align="left" >Juru Mudi</td>
+                    <td align="center" >  </td>
+                    <td align="center" >  </td>
+                    <td align="center" >:</td>
+                    <td align="right" >  </td>
+                    <td align="right" >-</td>
+                  </tr>
+
+                  <tr>
+                    <td id="td" align="left" >Tanggal Pengisian</td>
+                    <td align="center" >  </td>
+                    <td align="center" >  </td>
+                    <td align="center" >:</td>
+                    <td align="right" >  </td>
+                    <td align="right" >-</td>
+                  </tr>
+
+                  <tr>
+                    <td id="td" align="left" >Jumlah Setelah Pengisian Lalu</td>
+                    <td align="center" >  </td>
+                    <td align="center" >  </td>
+                    <td align="center" >:</td>
+                    <td align="right" >  </td>
+                    <td align="right" >-</td>
+                  </tr>
+
+                  <tr>
+                    <td id="td" align="left" >Pemakaian Motor Induk</td>
+                    <td align="center" >  </td>
+                    <td align="center" >  </td>
+                    <td align="center" >:</td>
+                    <td align="right" >  </td>
+                    <td align="right" >-</td>
+                  </tr>
+
+                  <tr>
+                    <td id="td" align="left" >Pemakaian Motor Bantu</td>
+                    <td align="center" >  </td>
+                    <td align="center" >  </td>
+                    <td align="center" >:</td>
+                    <td align="right" >  </td>
+                    <td align="right" >-</td>
+                  </tr>
+
+                  <tr>
+                    <td id="td" align="left" >Jumlah Pemakaian</td>
+                    <td align="center" >  </td>
+                    <td align="center" >  </td>
+                    <td align="center" >:</td>
+                    <td align="right" >  </td>
+                    <td align="right" >-</td>
+                  </tr>
+
+                  <tr>
+                    <td id="td" align="left" >Perhitungan Sisa Tangki Harian</td>
+                    <td align="center" >  </td>
+                    <td align="center" >  </td>
+                    <td align="center" >:</td>
+                    <td align="right" >  </td>
+                    <td align="right" >-</td>
+                  </tr>
+
+                  <tr>
+                    <td id="td" align="left" >Permintaan Tambahan</td>
+                    <td align="center" >  </td>
+                    <td align="center" >  </td>
+                    <td align="center" >:</td>
+                    <td align="right" >  </td>
+                    <td align="right" > {{$permintaans->v_permintaan}}</td>
+                  </tr>
+
+                  <tr>
+                    <td id="td" align="left" >Permintaan VTS</td>
+                    <td align="center" >  </td>
+                    <td align="center" >  </td>
+                    <td align="center" >:</td>
+                    <td align="right" >  </td>
+                    <td align="right" >{{$permintaans->vts}}</td>
+                  </tr>
+
+                  <tr>
+                    <td id="td" align="left" >Jumlah Setelah Pengisian</td>
+                    <td align="center" >  </td>
+                    <td align="center" >  </td>
+                    <td align="center" >:</td>
+                    <td align="right" >  </td>
+                    <td align="right" >{{$permintaans->v_awal}}</td>
+                  </tr>
                 <?php endif; ?>
+              </table>
 
                 <br><br>
                     <div class="card-two">
@@ -62,10 +228,6 @@
 
 
 
-              </div>
-          </div>
-      </div>
-  </div>
 </div>
 
 @endsection

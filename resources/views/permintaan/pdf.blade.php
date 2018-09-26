@@ -39,62 +39,86 @@
       <?php if ($idmin > 0): ?>
         <tr>
           <td id="td" align="left" >1. Tanggal pengisian lalu</td>
+          <td align="center" >  </td>
+          <td align="center" >  </td>
           <td align="center" >:</td>
           <td align="right" >{{$permintaanmin->tanggal_isi}}</td>
         </tr>
         <tr>
           <td id="td" align="left" >2. Jumlah setelah pengisian yang lalu</td>
+          <td align="center" >  </td>
+          <td align="center" >  </td>
           <td align="center" >:</td>
           <td align="right" >{{$permintaanmin->v_awal}}  Liter</td>
         </tr>
         <tr>
           <td id="td" align="left" >3. Pemakaian Motor induk</td>
+          <td align="center" > {{$jam}} </td>
+          <td align="center" >jam</td>
           <td align="center" >:</td>
           <td align="right" >{{$permintaanmin->v_me}} Liter</td>
         </tr>
         <tr>
           <td id="td" align="left" >4. Pemakaian Motor bantu</td>
+          <td align="center" > {{$jam}} </td>
+          <td align="center" >jam</td>
           <td align="center" >:</td>
           <td align="right" >{{$permintaanmin->v_ae}} Liter</td>
         </tr>
         <tr>
           <td id="td" align="left" >5. Jumlah pemakaian</td>
+          <td align="center" >  </td>
+          <td align="center" >  </td>
           <td align="center" >:</td>
           <td align="right" >{{$permintaanmin->v_pemakaian}} Liter</td>
         </tr>
         <tr>
           <td id="td" align="left" >6. Perhitungan sisa tangki Harian</td>
+          <td align="center" >  </td>
+          <td align="center" >  </td>
           <td align="center" >:</td>
           <td align="right" >{{$permintaanmin->v_sisa}} Liter</td>
         </tr>
       <?php else: ?>
         <tr>
           <td id="td" align="left" >1. Tanggal pengisian lalu</td>
+          <td align="center" >  </td>
+          <td align="center" >  </td>
           <td align="center" >:</td>
           <td align="right" >-</td>
         </tr>
         <tr>
           <td id="td" align="left" >2. Jumlah setelah pengisian yang lalu</td>
+          <td align="center" >  </td>
+          <td align="center" >  </td>
           <td align="center" >:</td>
           <td align="right" >- Liter</td>
         </tr>
         <tr>
           <td id="td" align="left" >3. Pemakaian Motor induk</td>
+          <td align="center" >  </td>
+          <td align="center" >  </td>
           <td align="center" >:</td>
           <td align="right" >- Liter</td>
         </tr>
         <tr>
           <td id="td" align="left" >4. Pemakaian Motor bantu</td>
+          <td align="center" >  </td>
+          <td align="center" >  </td>
           <td align="center" >:</td>
           <td align="right" >- Liter</td>
         </tr>
         <tr>
           <td id="td" align="left" >5. Jumlah pemakaian</td>
+          <td align="center" >  </td>
+          <td align="center" >  </td>
           <td align="center" >:</td>
           <td align="right" >- Liter</td>
         </tr>
         <tr>
           <td id="td" align="left" >6. Perhitungan sisa tangki Harian</td>
+          <td align="center" >  </td>
+          <td align="center" >  </td>
           <td align="center" >:</td>
           <td align="right" >- Liter</td>
         </tr>
@@ -102,11 +126,22 @@
       <?php endif; ?>
       <tr>
         <td id="td" align="left" >7. Permintaan tambahan</td>
+        <td align="center" >  </td>
+        <td align="center" >  </td>
         <td align="center" >:</td>
         <td align="right" >{{$permintaans->v_permintaan}} Liter</td>
       </tr>
       <tr>
-        <td id="td" align="left" >8. Jumlah setelah pengisian</td>
+        <td id="td" align="left" >8. Jumlah pengisian tangki VTS</td>
+        <td align="center" >  </td>
+        <td align="center" >  </td>
+        <td align="center" >:</td>
+        <td align="right" >{{$permintaans->vts}} Liter</td>
+      </tr>
+      <tr>
+        <td id="td" align="left" >9. Jumlah setelah pengisian</td>
+        <td align="center" >  </td>
+        <td align="center" >  </td>
         <td align="center" >:</td>
         <td align="right" >{{$permintaans->v_awal}} Liter</td>
       </tr>

@@ -11,7 +11,7 @@
                                 <form method="post" action="{{route('permintaan.store', $kapal->id)}}">
                                   {{ csrf_field() }}
                                     <input type = "hidden" name = "id_kapal" value = "{{ $kapal->id }}">
-
+                                    <input type = "hidden" name = "min_id" value = "{{ $kapal->id }}">
                                     <div class="form-body">
                                         <h3 class="card-title m-t-15">Tambah Data Permintaan {{ $kapal->name }}</h3>
                                         <hr>
@@ -39,6 +39,14 @@
                                                 <div class="form-group">
                                                     <label>Permintaan BBM</label>
                                                     <input type="number" name="v_permintaan" class="form-control" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12 ">
+                                                <div class="form-group">
+                                                    <label>Permintaan VTS</label>
+                                                    <input type="number" name="vts" class="form-control" required>
                                                 </div>
                                             </div>
                                         </div>

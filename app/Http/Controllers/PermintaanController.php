@@ -38,6 +38,7 @@ class PermintaanController extends Controller
          'juru_mudi' => 'required',
          'tanggal_isi' => 'required',
          'v_permintaan' => 'required',
+         'vts' => 'required',
        ]);
        //
        Permintaan::create($request->all());
@@ -52,10 +53,13 @@ class PermintaanController extends Controller
            $p->v_awal = $p->v_permintaan;
            Permintaan::find($p->id)->update(['v_awal' => $p->v_awal]);
            $idmin = $p->id - 1;
-           if ($p->id > 1) {
+           $min_permintaan = DB::table('permintaan')->join('kapal', 'permintaan.id_kapal', '=', 'kapal.id')
+                                                       ->where('permintaan.id_kapal', $id)
+                                                       ->min('permintaan.id');
+           if ($min_permintaan < $p->id) {
              $sebelum = Permintaan::whereId($idmin)->first();
              $sisa = $sebelum->v_sisa;
-             $awal = $p->v_permintaan + $sisa;
+             $awal = $p->v_permintaan + $sisa - $p->vts;
              Permintaan::find($p->id)->update(['v_awal' => $awal]);
            }
        }
@@ -88,6 +92,7 @@ class PermintaanController extends Controller
             'juru_mudi' => 'required',
             'tanggal_isi' => 'required',
             'v_permintaan' => 'required',
+            'vts' => 'required',
           ]);
           $input = $request->all();
           $permintaan1->fill($input)->save();
@@ -105,7 +110,7 @@ class PermintaanController extends Controller
               if ($permintaans->id > 1) {
                   $sebelum = Permintaan::whereId($idmin)->first();
                   $sisa = $sebelum->v_sisa;
-                  $awal = $permintaans->v_permintaan + $sisa;
+                  $awal = $permintaans->v_permintaan + $sisa - $permintaans->vts;
                   Permintaan::find($permintaans->id)->update(['v_awal' => $awal]);
               }
 
@@ -114,12 +119,15 @@ class PermintaanController extends Controller
               Permintaan::find($permintaans->id)->update(['v_sisa' => $permintaans->v_sisa]);
 
           $permintaanmin = Permintaan::whereId($idmin)->first();
-
+          $total_permintaan = DB::table('permintaan')->join('kapal', 'permintaan.id_kapal', '=', 'kapal.id')
+                                                 ->where('permintaan.id_kapal', $id)
+                                                 ->sum('permintaan.id');
           return view('permintaan.show')->with(compact('kapal_name'))
                                           ->with(compact('kapal_id'))
                                           ->with(compact('permintaans'))
                                           ->with(compact('idmin'))
                                           ->with(compact('permintaanmin'))
+                                          ->with(compact('total_permintaan'))
                                           ->with(compact('awal'));
      }
   public function destroy($id)
@@ -137,15 +145,21 @@ class PermintaanController extends Controller
                                         ->select('permintaan.*')
                                         ->where('permintaan.id_kapal', $id)
                                         ->get();
+
       foreach ($permintaans as $p) {
           $p->v_awal = $p->v_permintaan;
           $idmin = $p->id - 1;
-          if ($idmin > 0) {
+          $min_permintaan = DB::table('permintaan')->join('kapal', 'permintaan.id_kapal', '=', 'kapal.id')
+                                                      ->where('permintaan.id_kapal', $id)
+                                                      ->min('permintaan.id');
+          if ($min_permintaan < $p->id) {
             $sebelum = Permintaan::whereId($idmin)->first();
-            $p->v_awal = $p->v_permintaan + $sebelum->v_sisa;
+            $p->v_awal = $p->v_permintaan + $sebelum->v_sisa - $p->vts;
           }
 
+          $p->min_id = $min_permintaan;
           Permintaan::find($p->id)->update(['v_awal' => $p->v_awal]);
+          Permintaan::find($p->id)->update(['min_id' => $p->min_id]);
       }
       foreach ($permintaans as $p) {
           $p->v_sisa = $p->v_awal - $p->v_pemakaian;
@@ -170,7 +184,10 @@ class PermintaanController extends Controller
            $kapal = DB::table('kapal')->join('permintaan', 'permintaan.id_kapal', '=', 'kapal.id')
                                                ->where('permintaan.id', $id)
                                                ->max('kapal.name');
-           $pdf = PDF::loadView('permintaan.pdf', compact('idmin','permintaanmin'), compact('permintaans','kapal'));
+           $jam = DB::table('pemakaian')->join('permintaan', 'pemakaian.id_permintaan', '=', 'permintaan.id')
+                                                       ->where('pemakaian.id_permintaan', $idmin)
+                                                       ->sum('pemakaian.pakai_jam');
+           $pdf = PDF::loadView('permintaan.pdf', compact('idmin','permintaanmin','jam'), compact('permintaans','kapal'));
            return $pdf->download('Bon-Permintaan-BBM.pdf');
 
     }
@@ -203,11 +220,16 @@ class PermintaanController extends Controller
                                                   ->select('pemakaian.*')
                                                   ->where('pemakaian.id_permintaan', $id)
                                                   ->get();
+              $min_permintaan = DB::table('permintaan')->join('kapal', 'permintaan.id_kapal', '=', 'kapal.id')
+                                                          ->where('permintaan.id_kapal', $id)
+                                                          ->min('permintaan.id');
+
               return view('permintaan.show')->with(compact('kapal_name'))
                                             ->with(compact('pemakaians'))
                                             ->with(compact('permintaans'))
                                             ->with(compact('kapal_id'))
                                             ->with(compact('permintaanmin'))
+                                            ->with(compact('min_permintaan'))
                                             ->with(compact('idmin'));
     }
 }

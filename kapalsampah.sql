@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 05, 2018 at 11:03 AM
+-- Generation Time: Sep 14, 2018 at 11:48 AM
 -- Server version: 10.1.33-MariaDB
 -- PHP Version: 7.2.6
 
@@ -37,6 +37,16 @@ CREATE TABLE `kapal` (
   `keterangan` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `kapal`
+--
+
+INSERT INTO `kapal` (`id`, `name`, `hrm_me`, `hrm_ae`, `status`, `keterangan`) VALUES
+(1, 'KM. SAPU-SAPU I', 14, 3, 'operational', NULL),
+(2, 'KM LUMBA-LUMBA II', 14, 4, 'operational', 'mesin baik'),
+(3, 'KM SAPU-SAPU II', 14, 3, 'operational', NULL),
+(4, 'KM LELE', 14, 3, 'breakdown', 'ok');
+
 -- --------------------------------------------------------
 
 --
@@ -66,6 +76,22 @@ CREATE TABLE `pemakaian` (
   `bbm_ae` int(4) UNSIGNED NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `pemakaian`
+--
+
+INSERT INTO `pemakaian` (`id`, `id_permintaan`, `tanggal`, `mulai`, `selesai`, `pakai_jam`, `bbm_me`, `bbm_ae`) VALUES
+(1, 1, '2018-04-12', 2796, 2802, 6, 84, 18),
+(2, 1, '2018-04-13', 2802, 2808, 6, 84, 18),
+(3, 1, '2018-04-14', 2808, 2808, 0, 0, 0),
+(4, 1, '2018-04-15', 2808, 2808, 0, 0, 0),
+(5, 1, '2018-04-16', 2808, 2813, 5, 70, 15),
+(6, 1, '2018-04-17', 2813, 2819, 6, 84, 18),
+(7, 1, '2018-04-18', 2819, 2824, 5, 70, 15),
+(8, 1, '2018-04-19', 2824, 2830, 6, 84, 18),
+(9, 1, '2018-04-20', 2830, 2835, 5, 70, 15),
+(10, 1, '2018-04-21', 2835, 2842, 7, 98, 21);
+
 -- --------------------------------------------------------
 
 --
@@ -79,11 +105,22 @@ CREATE TABLE `permintaan` (
   `tanggal_isi` date NOT NULL,
   `v_permintaan` int(10) UNSIGNED NOT NULL,
   `v_awal` int(5) UNSIGNED NOT NULL DEFAULT '0',
+  `vts` int(10) UNSIGNED NOT NULL,
   `v_me` int(5) UNSIGNED NOT NULL DEFAULT '0',
   `v_ae` int(5) UNSIGNED NOT NULL DEFAULT '0',
   `v_pemakaian` int(5) UNSIGNED DEFAULT '0',
-  `v_sisa` int(5) UNSIGNED NOT NULL DEFAULT '0'
+  `v_sisa` int(5) UNSIGNED NOT NULL DEFAULT '0',
+  `min_id` int(10) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `permintaan`
+--
+
+INSERT INTO `permintaan` (`id`, `id_kapal`, `juru_mudi`, `tanggal_isi`, `v_permintaan`, `v_awal`, `vts`, `v_me`, `v_ae`, `v_pemakaian`, `v_sisa`, `min_id`) VALUES
+(1, 1, 'IRSAN JABIR', '2018-04-12', 1500, 1500, 0, 644, 138, 782, 718, 1),
+(8, 3, 'hgnxg', '2018-09-01', 1200, 1200, 100, 0, 0, 0, 1200, 8),
+(9, 1, 'irsan Jabir', '2018-05-16', 1500, 2300, 400, 0, 0, 0, 2300, 1);
 
 -- --------------------------------------------------------
 
@@ -100,6 +137,14 @@ CREATE TABLE `users` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `nip`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(3, 'Haslan', '820100922', '$2y$10$GWworW6InQpcY97oFGTuFO8sM6y4G9tPorwMi390FUIthF/0l/3Da', 'CnLEslpZADEaSvBvTVt1EseMljCqxjBPvSuso1fniQcEGJRKmGe4YXh1EQvk', NULL, NULL),
+(4, 'Irsan Jabir', '820100084', '$2y$10$nd0pBYqar10H8yieEl.2IuUq.4rmU2/jXqZv3TnozAVtkg.pS37Um', NULL, NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -145,7 +190,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `kapal`
 --
 ALTER TABLE `kapal`
-  MODIFY `id` int(3) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(3) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -157,19 +202,19 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `pemakaian`
 --
 ALTER TABLE `pemakaian`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `permintaan`
 --
 ALTER TABLE `permintaan`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

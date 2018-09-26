@@ -36,7 +36,7 @@
                                         <div class="row">
                                             <div class="col-md-12 ">
                                                 <div class="form-group">
-                                                    <label>HRM_ME</label>
+                                                    <label>Kebutuhan Kapal Induk / Jam</label>
                                                     <input type="number" class="form-control" name="hrm_me" value="<?php echo $kapal->hrm_me ?>" required>
                                                 </div>
                                             </div>
@@ -44,7 +44,7 @@
                                         <div class="row">
                                             <div class="col-md-12 ">
                                                 <div class="form-group">
-                                                    <label>HRM_AE</label>
+                                                    <label>Kebutuhan Kapal Bantu / Jam</label>
                                                     <input type="number" class="form-control" name="hrm_ae" value="<?php echo $kapal->hrm_ae ?>" required>
                                                 </div>
                                             </div>
@@ -54,17 +54,17 @@
                                             <label class="form-control-label">Status</label>
                                             <div>
                                               <div class="radio-custom radio-default radio-inline">
-                                                <input type="radio" name="status" value="aktif" <?php if ($kapal->status == 'aktif'): ?>
+                                                <input type="radio" name="status" value="operational" <?php if ($kapal->status == 'operational'): ?>
                                                   <?php echo "checked" ?>
                                                 <?php endif; ?> >
-                                                <label> Aktif </label>
+                                                <label> Operational </label>
                                               </div>
 
                                               <div class="radio-custom radio-default radio-inline">
-                                                <input type="radio" name="status" value="tidak aktif" <?php if ($kapal->status == 'tidak aktif'): ?>
+                                                <input type="radio" name="status" value="breakdown" <?php if ($kapal->status == 'breakdown'): ?>
                                                   <?php echo "checked" ?>
                                                 <?php endif; ?> >
-                                                <label> Tidak Aktif </label>
+                                                <label> Breakdown </label>
                                               </div>
                                             </div>
                                         </div>
@@ -72,7 +72,7 @@
                                         <div class="row">
                                             <div class="col-md-12 ">
                                                 <div class="form-group">
-                                                    <label>Keterangan</label>
+                                                    <label>Keterangan *</label>
                                                     <input type="text" class="form-control" name="keterangan" value="<?php echo $kapal->keterangan ?>">
                                                 </div>
                                             </div>

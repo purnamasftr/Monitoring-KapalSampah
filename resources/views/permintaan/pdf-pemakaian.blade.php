@@ -4,53 +4,67 @@
     <style media="screen">
           body
           {
-          counter-reset: Serial;           /* Set the Serial counter to 0 */
+            counter-reset: Serial;           /* Set the Serial counter to 0 */
           }
 
           table
           {
-          border-collapse: separate;
+            border-collapse: collapse;
+          }
+
+          table, td, th {
+            border: 1px solid black;
+            padding: 5px;
           }
 
           tr td:first-child:before
           {
-          counter-increment: Serial;      /* Increment the Serial counter */
-          content: "" counter(Serial); /* Display the counter */
+            counter-increment: Serial;      /* Increment the Serial counter */
+            content: "" counter(Serial); /* Display the counter */
           }
+
           .auto-index td:first-child:before
           {
             counter-increment: Serial;      /* Increment the Serial counter */
             content: "" counter(Serial); /* Display the counter */
           }
     </style>
+
     <meta charset="utf-8">
     <title></title>
+
   </head>
   <body>
     <div align="center">
       <h4>PEMAKAIAN BAHAN BAKAR</h4>
       <h4>KAPAL MOTOR: {{$kapal}}</h4>
       <h4> <u>DIVISI TEKNIK SIPIL PELABUHAN CABANG TANJUNG PRIOK</u> </h4>
-      <br><br>
     </div>
-    <table class="auto-index" border="1" >
+
+    <h5>Total BBM_ME : {{ $permintaans->v_me }} liter</h5>
+    <h5>Total BBM_AE : {{ $permintaans->v_ae }} liter</h5>
+    <h5>Total BBM : {{ $permintaans->v_pemakaian }} liter</h5>
+    <h5><b>Sisa BBM : {{ $permintaans->v_sisa }} liter</b></h5>
+
+    <table class="auto-index" >
+        <tr>
+          <th  rowspan="2">NO.</th>
+          <th  rowspan="2">TANGGAL</th>
+          <th  colspan="2" scope="colgroup" align="center" >ME</th>
+          <th  rowspan="2">Pakai Jam</th>
+          <th  rowspan="2">Pakai BBM</th>
+          <th  colspan="2" scope="colgroup" align="center" >AE</th>
+          <th  rowspan="2">Pakai Jam</th>
+          <th  rowspan="2">Pakai BBM</th>
+        </tr>
 
         <tr>
-          <th rowspan="2">NO.</th>
-          <th rowspan="2">TANGGAL</th>
-          <th colspan="2" scope="colgroup" align="center" >ME</th>
-          <th rowspan="2">Pakai Jam</th>
-          <th rowspan="2">Pakai BBM</th>
-          <th colspan="2" scope="colgroup" align="center" >AE</th>
-          <th rowspan="2">Pakai Jam</th>
-          <th rowspan="2">Pakai BBM</th>
+          <th  scope="col">Mulai</th>
+          <th  scope="col">Selesai</th>
+          <th  scope="col">Mulai</th>
+          <th  scope="col">Selesai</th>
         </tr>
-        <tr>
-          <th scope="col">Mulai</th>
-          <th scope="col">Selesai</th>
-          <th scope="col">Mulai</th>
-          <th scope="col">Selesai</th>
-        </tr>
+
         <?php foreach ($pemakaians as $p): ?>
           <tr>
             <td></td>
@@ -70,7 +84,7 @@
 
     <br><br>
     <div align="right">
-      Tanjung Priok,
+      Tanjung Priok,   
     </div>
     <div align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mengetahui, </div>
 

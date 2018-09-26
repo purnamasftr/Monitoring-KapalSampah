@@ -54,6 +54,14 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="row">
+                                            <div class="col-md-12 ">
+                                                <div class="form-group">
+                                                    <label>Permintaan VTS</label>
+                                                    <input type="number" name="vts" class="form-control" value="<?php echo $permintaans->vts ?>" required>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="form-actions">
                                         <button type="submit" onclick="window.location='{{ route('permintaan_view', $permintaans->id) }}'" class="btn btn-success"> <i class="fa fa-check"></i> Save</button>

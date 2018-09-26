@@ -26,9 +26,8 @@
                           @endif
                             <h2>Data Permintaan BBM</h2>
                             <h4 class="card-title">{{ $kapal_name }}</h4>
-                            <h6 class="card-subtitle">Export data to Copy, CSV, Excel, PDF & Print</h6>
                             <div class="table-responsive m-t-40">
-                                <table id="example23" class="display nowrap table table-hover table-bordered" cellspacing="0" width="100%">
+                                <table id="myTable" class="table table-bordered table-striped">
                                     <thead class="table-info">
                                         <tr>
                                             <th>Juru Mudi</th>
@@ -50,7 +49,7 @@
 
                                             <td>
                                               <div class="btn-group">
-                                                  <a href="{{action('PermintaanController@downloadPDFpem', $permintaan->id)}}" class="btn btn-danger m-b-10 m-1-5 "> PDF </a>
+                                                  <!-- <a href="{{action('PermintaanController@downloadPDFpem', $permintaan->id)}}" class="btn btn-danger m-b-10 m-1-5 "> PDF </a> -->
                                                 <button type="button" onclick="window.location='{{ route('permintaan_view', $permintaan->id) }}'" class="btn btn-info btn-flat m-b-10 m-l-5">View</button>
                                                 <button type="button" onclick="window.location='{{ route('pemakaian_kapal', $permintaan->id) }}'" class="btn btn-primary m-b-10 m-l-5">Pemakaian</button>
                                                 <a href = '/Monitoring-KapalSampah/public/delete_permintaan/{{ $permintaan->id }}' class="btn btn-danger m-b-10 m-l-5">Delete</a>

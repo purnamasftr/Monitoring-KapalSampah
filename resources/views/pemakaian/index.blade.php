@@ -26,13 +26,16 @@
                               </div>
                           @endif
                             <h2>Data Pemakaian BBM {{ $kapals }}</h2>
-                            <h5>Total BBM_ME : {{ $permintaan->v_me }}</h5>
-                            <h5>Total BBM_AE : {{ $permintaan->v_ae }}</h5>
-                            <h5>Total BBM : {{ $permintaan->v_pemakaian }}</h5>
-                            <h5 ><b>Sisa BBM : {{ $permintaan->v_sisa }}</b></h5>
+                            <h5>Total BBM_ME : {{ $permintaan->v_me }} liter</h5>
+                            <h5>Total BBM_AE : {{ $permintaan->v_ae }} liter</h5>
+                            <h5>Total BBM : {{ $permintaan->v_pemakaian }} liter</h5>
+                            <h5 ><b>Sisa BBM : {{ $permintaan->v_sisa }} liter</b></h5>
+
+
                             <div class="table-responsive m-t-40">
-                                <table id="example23" class="display nowrap table table-hover table-bordered" cellspacing="0" width="100%">
+                                <table id="myTable" class="table table-bordered table-striped">
                                     <thead class="table-info">
+                                      <a href="{{action('PermintaanController@downloadPDFpem', $permintaan->id)}}" class="btn btn-danger m-b-10 m-1-5 "> Download PDF </a>
                                         <tr>
                                             <th>Tanggal</th>
                                             <th>Mulai</th>

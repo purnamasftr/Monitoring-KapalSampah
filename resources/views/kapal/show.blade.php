@@ -20,10 +20,44 @@
                   <h3 align="center">{{$kapal->name}}</h3>
                     <br><br>
 
-                        <h5 align="center">HRM_ME   :      {{$kapal->hrm_me}}</h5>
-                        <h5 align="center">HRM_AE   :      {{$kapal->hrm_ae}}</h5>
-                        <h5 align="center">Status    :     {{$kapal->status}}</h5>
-                        <h5 align="center">Keterangan   :      {{$kapal->keterangan}}</h5>
+                    <table id="tabel" align="center">
+                      <tr>
+                        <td id="td" align="left" >Kebutuhan Kapal Induk / Jam</td>
+                        <td align="center" >  </td>
+                        <td align="center" >  </td>
+                        <td align="center" >:</td>
+                        <td align="right" >  </td>
+                        <td align="right" >{{$kapal->hrm_me}}</td>
+                      </tr>
+
+                      <tr>
+                        <td id="td" align="left" >Kebutuhan Kapal Bantu / Jam</td>
+                        <td align="center" >  </td>
+                        <td align="center" >  </td>
+                        <td align="center" >:</td>
+                        <td align="right" >  </td>
+                        <td align="right" > {{$kapal->hrm_ae}}</td>
+                      </tr>
+
+                      <tr>
+                        <td id="td" align="left" >Status</td>
+                        <td align="center" >  </td>
+                        <td align="center" >  </td>
+                        <td align="center" >:</td>
+                        <td align="right" >  </td>
+                        <td align="right" >{{$kapal->status}}</td>
+                      </tr>
+
+                      <tr>
+                        <td id="td" align="left">Keterangan</td>
+                        <td align="center" >  </td>
+                        <td align="center" >  </td>
+                        <td align="center" >:</td>
+                        <td align="right" >  </td>
+                        <td align="right" >{{$kapal->keterangan}}</td>
+                      </tr>
+
+                    </table>
 
                       <br><br>
                       <div class="card-two">

@@ -13,6 +13,7 @@
                                         <h3 class="card-title m-t-15">Tambah Data Pemakaian</h3>
                                         {{ csrf_field() }}
                                         <input type = "hidden" name = "id_permintaan" value = "{{ $permintaan->id }}">
+                                        
 
                                         <div class="row">
                                             <div class="col-md-12 ">
@@ -24,7 +25,7 @@
                                                     <?php else: ?>
                                                       <input type="date" name="tanggal" class="form-control" value="<?php echo $permintaan->tanggal_isi ?>" required>
                                                     <?php endif; ?>
-                                                    <h6>* Catatan : Tanggal yang harus diisi sekarang {{$tggl}}</h6>
+                                                    <h6></h6>
                                                 </div>
                                             </div>
                                         </div>

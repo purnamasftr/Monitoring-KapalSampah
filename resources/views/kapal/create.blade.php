@@ -36,7 +36,7 @@
                                         <div class="row">
                                             <div class="col-md-12 ">
                                                 <div class="form-group">
-                                                    <label>HRM_ME</label>
+                                                    <label>Kebutuhan Kapal Induk / Jam</label>
                                                     <input type="number" class="form-control" name="hrm_me" required>
                                                 </div>
                                             </div>
@@ -44,7 +44,7 @@
                                         <div class="row">
                                             <div class="col-md-12 ">
                                                 <div class="form-group">
-                                                    <label>HRM_AE</label>
+                                                    <label>Kebutuhan Kapal Bantu / Jam</label>
                                                     <input type="number" class="form-control" name="hrm_ae" required>
                                                 </div>
                                             </div>
@@ -54,13 +54,13 @@
                                             <div>
                                               <div>
                                                 <div class="radio-custom radio-default radio-inline">
-                                                  <input type="radio" name="status" value="aktif" >
-                                                  <label  > Aktif </label>
+                                                  <input type="radio" name="status" value="operational" >
+                                                  <label  > Operational </label>
                                                 </div>
 
                                                 <div class="radio-custom radio-default radio-inline">
-                                                  <input type="radio" name="status" value="tidak aktif" >
-                                                  <label  > Tidak Aktif </label>
+                                                  <input type="radio" name="status" value="breakdown" >
+                                                  <label  > Breakdown </label>
                                                 </div>
                                               </div>
                                             </div>
@@ -69,7 +69,7 @@
                                         <div class="row">
                                             <div class="col-md-12 ">
                                                 <div class="form-group">
-                                                    <label>Keterangan</label>
+                                                    <label>Keterangan *</label>
                                                     <input type="text" class="form-control" name="keterangan">
                                                 </div>
                                             </div>
